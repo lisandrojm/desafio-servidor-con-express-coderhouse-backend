@@ -17,6 +17,11 @@ en el que el servidor escuchará las solicitudes entrantes. */
 const app = express();
 const PORT = 8080;
 
+/* configura el middleware express.urlencoded() para analizar los datos enviados en una
+solicitud con el tipo de contenido application/x-www-form-urlencoded, permitiendo que los
+valores de los datos puedan ser objetos o matrices. */
+app.use(express.urlencoded({ extended: true }));
+
 /* Definimos una ruta /products para manejar las solicitudes GET. Cuando se accede a
 esta ruta, leemos el archivo productos.json, analizamos su contenido en un objeto
 JavaScript y luego respondemos con todos los productos o con un número limitado de
@@ -27,12 +32,8 @@ app.get('/products', async (req, res) => {
     const productsData = await fs.readFile('productos.json', 'utf8');
     const products = JSON.parse(productsData);
 
-    if (limit) {
-      const limitedProducts = products.slice(0, parseInt(limit));
-      res.json(limitedProducts);
-    } else {
-      res.json(products);
-    }
+    const limitedProducts = limit ? products.slice(0, parseInt(limit)) : products;
+    res.json(limitedProducts);
   } catch (error) {
     console.error('Error:', error);
     res.status(500).send('Internal Server Error');
