@@ -316,7 +316,7 @@ productManager.addProduct({
   description: 'Este es un producto para express',
   price: 100,
   thumbnail: 'Sin imagen',
-  code: 'abc123',
+  code: 'a1',
   stock: 10,
 });
 
@@ -326,7 +326,7 @@ productManager.addProduct({
   description: 'Este es un producto para express',
   price: 200,
   thumbnail: 'Sin imagen',
-  code: 'def456',
+  code: 'b2',
   stock: 20,
 });
 
@@ -335,8 +335,65 @@ productManager.addProduct({
   description: 'Este es un producto para express',
   price: 300,
   thumbnail: 'Sin imagen',
-  code: 'def456',
+  code: 'c3',
   stock: 30,
+});
+
+productManager.addProduct({
+  title: 'producto express 4',
+  description: 'Este es un producto para express',
+  price: 400,
+  thumbnail: 'Sin imagen',
+  code: 'd4',
+  stock: 40,
+});
+productManager.addProduct({
+  title: 'producto express 5',
+  description: 'Este es un producto para express',
+  price: 500,
+  thumbnail: 'Sin imagen',
+  code: 'c5',
+  stock: 50,
+});
+productManager.addProduct({
+  title: 'producto express 6',
+  description: 'Este es un producto para express',
+  price: 600,
+  thumbnail: 'Sin imagen',
+  code: 'd6',
+  stock: 60,
+});
+productManager.addProduct({
+  title: 'producto express 7',
+  description: 'Este es un producto para express',
+  price: 700,
+  thumbnail: 'Sin imagen',
+  code: 'e7',
+  stock: 70,
+});
+productManager.addProduct({
+  title: 'producto express 8',
+  description: 'Este es un producto para express',
+  price: 800,
+  thumbnail: 'Sin imagen',
+  code: 'f8',
+  stock: 80,
+});
+productManager.addProduct({
+  title: 'producto express 9',
+  description: 'Este es un producto para express',
+  price: 900,
+  thumbnail: 'Sin imagen',
+  code: 'g9',
+  stock: 90,
+});
+productManager.addProduct({
+  title: 'producto express 10',
+  description: 'Este es un producto para express',
+  price: 1000,
+  thumbnail: 'Sin imagen',
+  code: 'h10',
+  stock: 100,
 });
 
 console.log(productManager.getProducts());
