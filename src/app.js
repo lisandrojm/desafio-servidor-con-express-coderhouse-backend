@@ -1,6 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 /* DESAFÍO ENTREGABLE - Servidor con express */
 
+////////////////////////////////////////////////////////////////////////////////
+
 /* Importamos los módulos express y fs (file system) de Node.js. El módulo express
 nos permite crear y configurar el servidor, mientras que el módulo fs nos proporciona
 métodos para trabajar con archivos. */
