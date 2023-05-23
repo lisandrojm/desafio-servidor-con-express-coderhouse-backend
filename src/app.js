@@ -9,7 +9,8 @@ métodos para trabajar con archivos. */
 const express = require('express');
 
 /* El uso de const fs = require('fs').promises; nos permite acceder a las funciones
-del módulo fs de Node.js utilizando promesas en lugar de devoluciones de llamada (callbacks). */
+del módulo fs de Node.js utilizando promesas en lugar de devoluciones de llamada 
+(callbacks). */
 const fs = require('fs').promises;
 
 /* Creamos una instancia de la aplicación Express y establecemos el número de puerto
