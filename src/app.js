@@ -82,3 +82,6 @@ app.listen(PORT, () => {
   en el puerto especificado */
   console.log(`Server is running on port ${PORT}`);
 });
+
+////////////////////////////////////////////////////////////////////////////////
+/* Comando de ejecución: npx nodemon app.js */
