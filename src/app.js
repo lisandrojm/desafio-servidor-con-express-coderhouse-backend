@@ -71,4 +71,4 @@ app.listen(PORT, () => {
 });
 
 ////////////////////////////////////////////////////////////////////////////////
-/* comando de ejecución: npx nodemon app.js */
+/* Comando de ejecución: npx nodemon app.js */
