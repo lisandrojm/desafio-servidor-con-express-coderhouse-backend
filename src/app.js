@@ -18,7 +18,7 @@ en el que el servidor escuchará las solicitudes entrantes. */
 const app = express();
 const PORT = 8080;
 
-/* configura el middleware express.urlencoded() para analizar los datos enviados en una
+/* Configuramos el middleware express.urlencoded() para analizar los datos enviados en una
 solicitud con el tipo de contenido application/x-www-form-urlencoded, permitiendo que los
 valores de los datos puedan ser objetos o matrices. */
 app.use(express.urlencoded({ extended: true }));
