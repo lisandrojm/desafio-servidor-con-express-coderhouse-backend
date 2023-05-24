@@ -3,72 +3,82 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-/* Importamos los módulos express y fs (file system) de Node.js. El módulo express
-nos permite crear y configurar el servidor, mientras que el módulo fs nos proporciona
-métodos para trabajar con archivos. */
+/* Importamos el módulo 'express' y lo asignamos a la variable 'express' */
 const express = require('express');
 
-/* El uso de const fs = require('fs').promises; nos permite acceder a las funciones
-del módulo fs de Node.js utilizando promesas en lugar de devoluciones de llamada 
-(callbacks). */
+/* Importamos el módulo 'fs' y obtenemos su función 'promises' para realizar
+operaciones de lectura y escritura de archivos de forma asíncrona */
 const fs = require('fs').promises;
 
-/* Creamos una instancia de la aplicación Express y establecemos el número de puerto
-en el que el servidor escuchará las solicitudes entrantes. */
+/* Creamos una instancia de la aplicación Express */
 const app = express();
+
+/* Definimos el número de puerto en el que se ejecutará el servidor */
 const PORT = 8080;
 
-/* Configuramos el middleware express.urlencoded() para analizar los datos enviados en una
-solicitud con el tipo de contenido application/x-www-form-urlencoded, permitiendo que los
-valores de los datos puedan ser objetos o matrices. */
+/* Configuramos el middleware de 'urlencoded' para analizar los datos de URL
+codificados y los convertimos en un objeto JavaScript accesible en 'req.body' */
 app.use(express.urlencoded({ extended: true }));
 
-/* Definimos una ruta /products para manejar las solicitudes GET. Cuando se accede a
-esta ruta, leemos el archivo productos.json, analizamos su contenido en un objeto
-JavaScript y luego respondemos con todos los productos o con un número limitado de
-productos según el valor del parámetro de consulta limit en la URL. */
+/* Definimos una ruta GET llamada '/products' en la aplicación Express */
 app.get('/products', async (req, res) => {
   try {
+    /* Obtenemos el valor del parámetro 'limit' de la consulta (si existe) */
     const limit = req.query.limit;
+    /* Leemos el contenido del archivo 'productos.json' de forma asíncrona y
+    esperamos a que se complete */
     const productsData = await fs.readFile('productos.json', 'utf8');
+    /* Convertimos los datos leídos del archivo JSON en un objeto JavaScript */
     const products = JSON.parse(productsData);
-
+    /* Creamos una variable 'limitedProducts' que almacena los productos 
+    limitados según el parámetro 'limit' o todos los productos si no se
+    especifica el parámetro */
     const limitedProducts = limit ? products.slice(0, parseInt(limit)) : products;
+    /* Enviamos una respuesta JSON al cliente con los productos limitados */
     res.json(limitedProducts);
   } catch (error) {
+    /* En caso de error, mostramos el mensaje de error en la consola */
     console.error('Error:', error);
+    /* Enviamos una respuesta con el código de estado 500 (Error interno del
+     servidor) y el mensaje de error correspondiente */
     res.status(500).send('Internal Server Error');
   }
 });
 
-/* Definimos una ruta /products/:pid para manejar las solicitudes GET con un parámetro
-de ruta pid. Cuando se accede a esta ruta, leemos el archivo productos.json,
-analizamos su contenido en un objeto JavaScript y luego buscamos el producto que
-coincide con el ID proporcionado en el parámetro de ruta. Respondemos con el
-producto encontrado si existe, o enviamos un código de estado 404 si no se encuentra el producto. */
+/* Definimos una ruta GET llamada '/products/:pid' en la aplicación Express */
 app.get('/products/:pid', async (req, res) => {
   try {
+    /* Obtenemos el valor del parámetro de ruta 'pid' */
     const pid = req.params.pid;
+    /* Leemos el contenido del archivo 'productos.json' de forma asíncrona y
+    esperamos a que se complete */
     const productsData = await fs.readFile('productos.json', 'utf8');
+    /* Convertimos los datos leídos del archivo JSON en un objeto JavaScript */
     const products = JSON.parse(productsData);
+    /* Buscamos un producto en la lista de productos según el 'id' coincidente */
     const product = products.find((p) => p.id === parseInt(pid));
 
     if (product) {
+      /* Si se encuentra el producto, enviamos una respuesta JSON al cliente con
+      el producto correspondiente */
       res.json(product);
     } else {
+      /* Si no se encuentra el producto, enviamos una respuesta con el código de
+      estado 404 (No encontrado) y un mensaje indicando que el producto no existe */
       res.status(404).send('El producto no existe');
     }
   } catch (error) {
+    /* En caso de error, mostramos el mensaje de error en la consola */
     console.error('Error:', error);
+    /*  Enviamos una respuesta con el código de estado 500 (Error interno del servidor)
+    y el mensaje de error correspondiente */
     res.status(500).send('Internal Server Error');
   }
 });
 
-/* Iniciamos el servidor y lo hacemos escuchar en el puerto especificado. Imprimimos
-un mensaje en la consola indicando que el servidor se está ejecutando en ese puerto. */
+/* Iniciamos el servidor */
 app.listen(PORT, () => {
+  /* Mostramos un mensaje en la consola indicando que el servidor se está ejecutando
+  en el puerto especificado */
   console.log(`Server is running on port ${PORT}`);
 });
-
-////////////////////////////////////////////////////////////////////////////////
-/* Comando de ejecución: npx nodemon app.js */
