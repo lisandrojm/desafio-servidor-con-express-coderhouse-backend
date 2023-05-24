@@ -312,7 +312,7 @@ const productManager = new ProductManager('productos.json');
 
 /* Se agregan los productos para el Desafío Entregable "Servidor con express" */
 productManager.addProduct({
-  title: 'producto express 1',
+  title: 'Producto express 1',
   description: 'Este es un producto para express',
   price: 100,
   thumbnail: 'Sin imagen',
@@ -322,7 +322,7 @@ productManager.addProduct({
 
 /* Productos agregados para express */
 productManager.addProduct({
-  title: 'producto express 2',
+  title: 'Producto express 2',
   description: 'Este es un producto para express',
   price: 200,
   thumbnail: 'Sin imagen',
@@ -331,7 +331,7 @@ productManager.addProduct({
 });
 
 productManager.addProduct({
-  title: 'producto express 3',
+  title: 'Producto express 3',
   description: 'Este es un producto para express',
   price: 300,
   thumbnail: 'Sin imagen',
@@ -340,7 +340,7 @@ productManager.addProduct({
 });
 
 productManager.addProduct({
-  title: 'producto express 4',
+  title: 'Producto express 4',
   description: 'Este es un producto para express',
   price: 400,
   thumbnail: 'Sin imagen',
@@ -348,7 +348,7 @@ productManager.addProduct({
   stock: 40,
 });
 productManager.addProduct({
-  title: 'producto express 5',
+  title: 'Producto express 5',
   description: 'Este es un producto para express',
   price: 500,
   thumbnail: 'Sin imagen',
@@ -356,7 +356,7 @@ productManager.addProduct({
   stock: 50,
 });
 productManager.addProduct({
-  title: 'producto express 6',
+  title: 'Producto express 6',
   description: 'Este es un producto para express',
   price: 600,
   thumbnail: 'Sin imagen',
@@ -364,7 +364,7 @@ productManager.addProduct({
   stock: 60,
 });
 productManager.addProduct({
-  title: 'producto express 7',
+  title: 'Producto express 7',
   description: 'Este es un producto para express',
   price: 700,
   thumbnail: 'Sin imagen',
@@ -372,7 +372,7 @@ productManager.addProduct({
   stock: 70,
 });
 productManager.addProduct({
-  title: 'producto express 8',
+  title: 'Producto express 8',
   description: 'Este es un producto para express',
   price: 800,
   thumbnail: 'Sin imagen',
@@ -380,7 +380,7 @@ productManager.addProduct({
   stock: 80,
 });
 productManager.addProduct({
-  title: 'producto express 9',
+  title: 'Producto express 9',
   description: 'Este es un producto para express',
   price: 900,
   thumbnail: 'Sin imagen',
@@ -388,7 +388,7 @@ productManager.addProduct({
   stock: 90,
 });
 productManager.addProduct({
-  title: 'producto express 10',
+  title: 'Producto express 10',
   description: 'Este es un producto para express',
   price: 1000,
   thumbnail: 'Sin imagen',
