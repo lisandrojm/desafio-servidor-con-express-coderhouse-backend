@@ -35,13 +35,13 @@ app.get('/products', async (req, res) => {
     especifica el parámetro */
     const limitedProducts = limit ? products.slice(0, parseInt(limit)) : products;
     /* Enviamos una respuesta JSON al cliente con los productos limitados */
-    res.json(limitedProducts);
+    return res.status(200).json(limitedProducts);
   } catch (error) {
     /* En caso de error, mostramos el mensaje de error en la consola */
     console.error('Error:', error);
     /* Enviamos una respuesta con el código de estado 500 (Error interno del
      servidor) y el mensaje de error correspondiente */
-    res.status(500).send('Internal Server Error');
+    return res.status(500).send('Internal Server Error');
   }
 });
 
@@ -61,18 +61,18 @@ app.get('/products/:pid', async (req, res) => {
     if (product) {
       /* Si se encuentra el producto, enviamos una respuesta JSON al cliente con
       el producto correspondiente */
-      res.json(product);
+      return res.status(200).json(product);
     } else {
       /* Si no se encuentra el producto, enviamos una respuesta con el código de
       estado 404 (No encontrado) y un mensaje indicando que el producto no existe */
-      res.status(404).send('El producto no existe');
+      return res.status(404).send('El producto no existe');
     }
   } catch (error) {
     /* En caso de error, mostramos el mensaje de error en la consola */
     console.error('Error:', error);
     /*  Enviamos una respuesta con el código de estado 500 (Error interno del servidor)
     y el mensaje de error correspondiente */
-    res.status(500).send('Internal Server Error');
+    return res.status(500).send('Internal Server Error');
   }
 });
 
@@ -84,4 +84,4 @@ app.listen(PORT, () => {
 });
 
 ////////////////////////////////////////////////////////////////////////////////
-/* Comando de ejecución: npx nodemon app.js */
+/* Comando de ejecución: npm run dev */
