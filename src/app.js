@@ -41,7 +41,7 @@ app.get('/products', async (req, res) => {
     console.error('Error:', error);
     /* Enviamos una respuesta con el código de estado 500 (Error interno del
      servidor) y el mensaje de error correspondiente */
-    return res.status(500).send('Internal Server Error');
+    return res.status(500).send({ status: 'error', error: 'Internal Server Error' });
   }
 });
 
@@ -65,7 +65,7 @@ app.get('/products/:pid', async (req, res) => {
     } else {
       /* Si no se encuentra el producto, enviamos una respuesta con el código de
       estado 404 (No encontrado) y un mensaje indicando que el producto no existe */
-      return res.status(404).send('El producto no existe');
+      return res.status(404).send({ status: 'error', error: 'El producto no existe' });
     }
   } catch (error) {
     /* En caso de error, mostramos el mensaje de error en la consola */
